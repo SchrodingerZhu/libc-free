@@ -3,13 +3,9 @@
 use core::cell::UnsafeCell;
 use core::ops::{Deref, DerefMut};
 use core::sync::atomic::*;
-use std::sync::atomic::Ordering::Relaxed;
 
 use syscalls::*;
 
-use elision::*;
-
-mod elision;
 
 pub const FUTEX_WAIT: u64 = 0;
 pub const FUTEX_WAKE: u64 = 1;
@@ -62,8 +58,8 @@ pub fn futex_wake_one(target: &AtomicU64) {
 
 
 pub struct Futex<T> {
-    _flag: AtomicU64,
-    item: core::cell::UnsafeCell<T>,
+    pub(crate) _flag: AtomicU64,
+    pub(crate) item: core::cell::UnsafeCell<T>,
 }
 
 pub struct FutexHandle<'a, T> {
@@ -86,7 +82,7 @@ impl<T> Futex<T> {
     #[inline(always)]
     fn raw_lock(&self) {
         // try elision lock
-        if self._flag.load(Relaxed) == FREE
+        if self._flag.load(Ordering::Relaxed) == FREE
             && FREE == unsafe {
             let prev: u64;
             llvm_asm!("xacquire; lock; cmpxchgq $2, $1"
@@ -186,6 +182,7 @@ mod test {
                 let data = data.clone();
                 handles.push(std::thread::spawn(move || {
                     let mut handle = data.lock();
+                    std::thread::sleep(std::time::Duration::from_millis(1));
                     *handle += 1;
                 }));
             }
@@ -198,6 +195,7 @@ mod test {
             }
         });
     }
+
     #[bench]
     fn test_mutex(bencher: &mut Bencher) {
         bencher.iter(|| {
@@ -207,6 +205,7 @@ mod test {
                 let data = data.clone();
                 handles.push(std::thread::spawn(move || {
                     let mut handle = data.lock().unwrap();
+                    std::thread::sleep(std::time::Duration::from_millis(1));
                     *handle += 1;
                 }));
             }

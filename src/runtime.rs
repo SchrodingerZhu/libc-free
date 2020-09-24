@@ -1,6 +1,7 @@
 use core::panic::PanicInfo;
 
 use syscalls::*;
+use crate::write::*;
 
 extern "C" {
     fn main() -> isize;
@@ -8,16 +9,18 @@ extern "C" {
 
 
 #[no_mangle]
-unsafe extern "system" fn _start() {
+unsafe extern "C" fn _start() {
     let result = main();
     syscall!(SYS_exit, result).unwrap();
 }
 
 /// This function is called on panic.
 #[panic_handler]
-fn panic(_info: &PanicInfo) -> ! {
+fn panic(info: &PanicInfo) -> ! {
     unsafe {
-        syscall!(SYS_exit, 114514).unwrap();
+        WRITER.lock()._write_str("[EXCEPTION]\n");
+        crate::eprintln!("{}", info);
+        syscall!(SYS_exit, 1).unwrap();
         core::hint::unreachable_unchecked()
     }
 }
