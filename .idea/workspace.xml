@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="CargoProjects">
+    <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6dfde7bf-e934-4257-a6de-080068368f33" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/flag.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/runtime.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sync.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sync/elision.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/syscall.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/write.rs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="f87vm7cs" />
+  </component>
+  <component name="ProjectId" id="1htJIESJIvSrLuNd7yCA96nT69Y" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/target/debug/untitled7" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
+  </component>
+  <component name="RunManager" selected="Cargo Command.Test sync::test::test_futex">
+    <configuration name="Build untitled7" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+      <option name="channel" value="DEFAULT" />
+      <option name="command" value="rustc -- -C link-arg=-nostartfiles -C link-arg=-ffreestanding" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Run untitled7" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="channel" value="DEFAULT" />
+      <option name="command" value="run --package untitled7 --bin untitled7" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test sync::test::test_futex" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="channel" value="DEFAULT" />
+      <option name="command" value="test --package untitled7 --bin untitled7 sync::test::test_futex -- --exact" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Run" type="ShConfigurationType">
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/run.sh" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/usr/bin/zsh" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <method v="2">
+        <option name="RunConfigurationTask" enabled="true" run_configuration_name="Build untitled7" run_configuration_type="CargoCommandRunConfiguration" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Cargo Command.Build untitled7" />
+      <item itemvalue="Cargo Command.Run untitled7" />
+      <item itemvalue="Cargo Command.Test sync::test::test_futex" />
+      <item itemvalue="Shell Script.Run" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Cargo Command.Test sync::test::test_futex" />
+        <item itemvalue="Cargo Command.Run untitled7" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="RustProjectSettings">
+    <option name="toolchainHomeDirectory" value="/usr/bin" />
+    <option name="version" value="2" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6dfde7bf-e934-4257-a6de-080068368f33" name="Default Changelist" comment="" />
+      <created>1600824372634</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1600824372634</updated>
+      <workItem from="1600824373889" duration="985000" />
+      <workItem from="1600828214767" duration="5494000" />
+      <workItem from="1600914937482" duration="6285000" />
+      <workItem from="1600924424169" duration="5398000" />
+      <workItem from="1600939162733" duration="8405000" />
+      <workItem from="1600949411274" duration="4372000" />
+      <workItem from="1600953988278" duration="141000" />
+      <workItem from="1600963191788" duration="364000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="420" y="218" width="1079" height="784" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600833706756">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="420" y="218" width="1079" height="784" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1600833706756" />
+    <state x="1265" y="219" key="#com.intellij.ide.util.MemberChooser" timestamp="1600941984195">
+      <screen x="540" y="0" width="1920" height="1080" />
+    </state>
+    <state x="725" y="219" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1600921050254" />
+    <state x="1265" y="219" key="#com.intellij.ide.util.MemberChooser/540.0.1920.1080/0.0.540.960@540.0.1920.1080" timestamp="1600941984195" />
+    <state x="694" y="297" key="FileChooserDialogImpl" timestamp="1600833547684">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="694" y="297" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1600833547684" />
+    <state width="905" height="273" key="GridCell.Tab.0.bottom" timestamp="1600943702879">
+      <screen x="540" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1865" height="273" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1600921971293" />
+    <state width="905" height="273" key="GridCell.Tab.0.bottom/540.0.1920.1080/0.0.540.960@540.0.1920.1080" timestamp="1600943702879" />
+    <state width="905" height="273" key="GridCell.Tab.0.center" timestamp="1600943702879">
+      <screen x="540" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1865" height="273" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1600921971292" />
+    <state width="905" height="273" key="GridCell.Tab.0.center/540.0.1920.1080/0.0.540.960@540.0.1920.1080" timestamp="1600943702879" />
+    <state width="905" height="273" key="GridCell.Tab.0.left" timestamp="1600943702878">
+      <screen x="540" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1865" height="273" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1600921971291" />
+    <state width="905" height="273" key="GridCell.Tab.0.left/540.0.1920.1080/0.0.540.960@540.0.1920.1080" timestamp="1600943702878" />
+    <state width="905" height="273" key="GridCell.Tab.0.right" timestamp="1600943702879">
+      <screen x="540" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1865" height="273" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1600921971293" />
+    <state width="905" height="273" key="GridCell.Tab.0.right/540.0.1920.1080/0.0.540.960@540.0.1920.1080" timestamp="1600943702879" />
+    <state x="1736" y="460" width="482" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600940101547">
+      <screen x="540" y="0" width="1920" height="1080" />
+    </state>
+    <state x="1736" y="460" width="482" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/540.0.1920.1080/0.0.540.960@540.0.1920.1080" timestamp="1600940101547" />
+    <state x="1071" y="30" width="736" height="1043" key="find.popup" timestamp="1600925093000">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="1071" y="30" width="736" height="1043" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1600925093000" />
+    <state x="539" y="257" key="run.anything.popup" timestamp="1600832805769">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="539" y="257" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1600832805769" />
+    <state x="1078" y="45" width="840" height="1034" key="search.everywhere.popup" timestamp="1600944813847">
+      <screen x="540" y="0" width="1920" height="1080" />
+    </state>
+    <state x="1078" y="45" width="840" height="1034" key="search.everywhere.popup/540.0.1920.1080/0.0.540.960@540.0.1920.1080" timestamp="1600944813847" />
+  </component>
+</project>
