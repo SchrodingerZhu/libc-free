@@ -10,7 +10,9 @@ extern "C" {
 
 #[no_mangle]
 unsafe extern "C" fn _start() {
+    crate::thread::init_main_thread();
     let result = main();
+    crate::thread::munmap_self();
     syscall!(SYS_exit, result).unwrap();
 }
 

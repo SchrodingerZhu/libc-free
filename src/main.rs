@@ -5,6 +5,7 @@
 #![feature(alloc_error_handler)]
 #![feature(alloc_prelude)]
 #![feature(llvm_asm)]
+#![feature(asm)]
 
 
 extern crate alloc;
@@ -15,17 +16,17 @@ mod flag;
 mod write;
 mod sync;
 mod memory;
-
+mod thread;
 #[cfg(not(test))]
 mod runtime;
 
 #[cfg(test)]
 extern crate test;
 
-
-
+#[cfg(not(test))]
 #[no_mangle]
 fn main() -> i32 {
-    panic!("123");
+    let s = unsafe { thread::thread_self() };
+    println!("{}", s.ppid);
     0
 }

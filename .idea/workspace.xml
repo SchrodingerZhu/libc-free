@@ -31,13 +31,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6dfde7bf-e934-4257-a6de-080068368f33" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/thread.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/memory.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/memory.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/runtime.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sync.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/sync.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sync/elision.rs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/syscall.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/memory.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/write.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/write.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +108,7 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -123,6 +122,8 @@
       <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
       <option name="INTERPRETER_PATH" value="/usr/bin/zsh" />
       <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <envs />
       <method v="2">
         <option name="RunConfigurationTask" enabled="true" run_configuration_name="Build untitled7" run_configuration_type="CargoCommandRunConfiguration" />
       </method>
@@ -160,7 +161,9 @@
       <workItem from="1600949411274" duration="4372000" />
       <workItem from="1600953988278" duration="141000" />
       <workItem from="1600963191788" duration="364000" />
-      <workItem from="1600964378916" duration="7756000" />
+      <workItem from="1600964378916" duration="7885000" />
+      <workItem from="1600997768755" duration="1164000" />
+      <workItem from="1601031367922" duration="19474000" />
     </task>
     <servers />
   </component>
@@ -177,6 +180,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="420" y="218" width="1079" height="784" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600833706756">
@@ -225,14 +229,26 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="1071" y="30" width="736" height="1043" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1600925093000" />
-    <state x="539" y="257" key="run.anything.popup" timestamp="1600832805769">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="539" y="257" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1600832805769" />
-    <state x="717" y="57" width="1120" height="1345" key="search.everywhere.popup" timestamp="1600970682861">
+    <state x="719" y="334" key="run.anything.popup" timestamp="1601043322932">
       <screen x="0" y="0" width="2560" height="1404" />
     </state>
-    <state x="717" y="57" width="1120" height="1345" key="search.everywhere.popup/0.0.2560.1404@0.0.2560.1404" timestamp="1600970682861" />
+    <state x="539" y="257" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1600832805769" />
+    <state x="719" y="334" key="run.anything.popup/0.0.2560.1404@0.0.2560.1404" timestamp="1601043322932" />
+    <state x="717" y="57" width="1120" height="1345" key="search.everywhere.popup" timestamp="1601046299424">
+      <screen x="0" y="0" width="2560" height="1404" />
+    </state>
+    <state x="717" y="57" width="1120" height="1345" key="search.everywhere.popup/0.0.2560.1404@0.0.2560.1404" timestamp="1601046299424" />
     <state x="1078" y="45" width="840" height="1034" key="search.everywhere.popup/540.0.1920.1080/0.0.540.960@540.0.1920.1080" timestamp="1600944813847" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/sync.rs</url>
+          <line>312</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
