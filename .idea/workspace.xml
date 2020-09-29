@@ -31,12 +31,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6dfde7bf-e934-4257-a6de-080068368f33" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/thread.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/memory.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/memory.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/runtime.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sync.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/sync.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,11 +104,6 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Run" type="ShConfigurationType">
       <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
       <option name="SCRIPT_PATH" value="$PROJECT_DIR$/run.sh" />
@@ -163,7 +154,9 @@
       <workItem from="1600963191788" duration="364000" />
       <workItem from="1600964378916" duration="7885000" />
       <workItem from="1600997768755" duration="1164000" />
-      <workItem from="1601031367922" duration="19474000" />
+      <workItem from="1601031367922" duration="22691000" />
+      <workItem from="1601095184541" duration="3780000" />
+      <workItem from="1601099908886" duration="11000" />
     </task>
     <servers />
   </component>
@@ -229,15 +222,15 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="1071" y="30" width="736" height="1043" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1600925093000" />
-    <state x="719" y="334" key="run.anything.popup" timestamp="1601043322932">
+    <state x="719" y="334" key="run.anything.popup" timestamp="1601097075220">
       <screen x="0" y="0" width="2560" height="1404" />
     </state>
     <state x="539" y="257" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1600832805769" />
-    <state x="719" y="334" key="run.anything.popup/0.0.2560.1404@0.0.2560.1404" timestamp="1601043322932" />
-    <state x="717" y="57" width="1120" height="1345" key="search.everywhere.popup" timestamp="1601046299424">
+    <state x="719" y="334" key="run.anything.popup/0.0.2560.1404@0.0.2560.1404" timestamp="1601097075220" />
+    <state x="717" y="57" width="1120" height="1345" key="search.everywhere.popup" timestamp="1601058475876">
       <screen x="0" y="0" width="2560" height="1404" />
     </state>
-    <state x="717" y="57" width="1120" height="1345" key="search.everywhere.popup/0.0.2560.1404@0.0.2560.1404" timestamp="1601046299424" />
+    <state x="717" y="57" width="1120" height="1345" key="search.everywhere.popup/0.0.2560.1404@0.0.2560.1404" timestamp="1601058475876" />
     <state x="1078" y="45" width="840" height="1034" key="search.everywhere.popup/540.0.1920.1080/0.0.540.960@540.0.1920.1080" timestamp="1600944813847" />
   </component>
   <component name="XDebuggerManager">
@@ -247,6 +240,11 @@
           <url>file://$PROJECT_DIR$/src/sync.rs</url>
           <line>312</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/memory.rs</url>
+          <line>123</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -3,6 +3,7 @@ use syscalls::*;
 use crate::flag;
 use core::alloc::Layout;
 use crate::write::{WRITER, EWRITER};
+use std::sync::atomic::AtomicPtr;
 
 
 pub struct NaiveAllocator;
@@ -73,4 +74,60 @@ fn alloc_error_handler(layout: core::alloc::Layout) -> ! {
         syscall!(SYS_exit, 1).unwrap();
         core::hint::unreachable_unchecked();
     }
+}
+
+pub const SEGMENT_MASK : usize = 0xffffffffffc00000;
+pub const SEGMENT_SHIFT : usize = 22;
+pub const SEGMENT_SIZE : usize = 4194304;
+pub const SMALL_PAGE_SHIFT : usize = 16;
+pub const SMALL_PAGE_SIZE : usize = 65536;
+pub const MID_PAGE_SHIFT : usize = 19;
+pub const MID_PAGE_SIZE : usize = 524288;
+pub const HUGE_PAGE_SHIFT : usize = 22;
+pub const HUGE_PAGE_SIZE : usize = 4194304;
+
+enum PageType {
+    SMALL, MID, HUGE
+}
+
+#[repr(C)]
+struct LocalBlock {
+    next: *mut Block,
+}
+
+#[repr(C)]
+struct Block {
+    next: AtomicPtr<Block>,
+}
+
+#[repr(C, align(4096))]
+struct Page {
+    thread_free: AtomicPtr<Block>,
+    local_free: *mut LocalBlock,
+    free: *mut LocalBlock,
+    page_type: PageType,
+    next: *mut Page,
+    prev: *mut Page,
+    block_size: usize,
+    segment_idx: usize
+}
+
+#[repr(C, align(4194304))]
+struct Segment {
+    thread_id: u64,
+    page_shift: usize,
+    page_start: *mut Page,
+}
+
+unsafe fn locate_page(ptr: *mut u8) -> &'static mut Page {
+    let ptr = ptr as usize;
+    let segment = &mut *((ptr & MASK) as *mut Segment);
+    let
+}
+
+#[repr(C)]
+struct Heap {
+    next: *mut Block,
+    page_direct: [*mut Page; 128],
+    page_queues: [PageQueue; ]
 }
