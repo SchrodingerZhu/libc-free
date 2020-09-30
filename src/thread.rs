@@ -38,7 +38,7 @@ pub unsafe fn thread_self() -> &'static mut Thread {
     let thread : *mut Thread;
     llvm_asm!(
         "mov %fs:0x0, $0" :
-         "=r"(thread) ::: "memory"
+         "=r"(thread)
     );
     return &mut *thread;
 }

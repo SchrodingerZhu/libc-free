@@ -1,6 +1,7 @@
 #![cfg_attr(not(test), no_std)]
 #![cfg_attr(not(test), no_main)]
 #![cfg_attr(test, feature(test))]
+#![feature(core_intrinsics)]
 #![feature(lang_items)]
 #![feature(alloc_error_handler)]
 #![feature(alloc_prelude)]

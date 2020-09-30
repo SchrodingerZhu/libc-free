@@ -3,8 +3,9 @@ use syscalls::*;
 use crate::flag;
 use core::alloc::Layout;
 use crate::write::{WRITER, EWRITER};
-use std::sync::atomic::AtomicPtr;
+use core::sync::atomic::*;
 
+const NUMA_LIMIT : usize = 256;
 
 pub struct NaiveAllocator;
 
@@ -119,15 +120,125 @@ struct Segment {
     page_start: *mut Page,
 }
 
-unsafe fn locate_page(ptr: *mut u8) -> &'static mut Page {
-    let ptr = ptr as usize;
-    let segment = &mut *((ptr & MASK) as *mut Segment);
-    let
+
+
+#[inline]
+fn address_hint(alignment: usize, size: usize) -> usize {
+    static ALIGNED_BASE : AtomicUsize = AtomicUsize::new(0);
+    if alignment == 0 || alignment > SEGMENT_SIZE {
+        return 0;
+    }
+    if alignment % SEGMENT_SIZE != 0 {
+        return 0;
+    }
+    let mut hint = ALIGNED_BASE.fetch_add(size, Ordering::AcqRel);
+    if hint == 0 || hint > 30 << 40 {
+        ALIGNED_BASE.compare_and_swap(hint + size, 4 << 40, Ordering::AcqRel);
+        hint = ALIGNED_BASE.fetch_add(size, Ordering::AcqRel);
+    }
+    if hint % alignment != 0 {
+        0
+    } else {
+        hint
+    }
+}
+
+unsafe fn hinted_mmap(addr: *mut u8, size: usize, alignment: usize, prot_flags: i64, map_flags: i64, fd: i64) -> *mut u8 {
+    let mut result = core::ptr::null_mut();
+    let hint = address_hint(alignment, size);
+    if addr.is_null() && hint != 0 {
+        if let Ok(res) = syscall!(SYS_mmap, hint, size, prot_flags, map_flags, fd, 0) {
+            result = res as *mut u8;
+        }
+    }
+    if result.is_null() {
+        if let Ok(res) = syscall!(SYS_mmap, addr, size, prot_flags, map_flags, fd, 0) {
+            result = res as *mut u8;
+        }
+    }
+    result
+}
+
+unsafe fn munmap(addr: *mut u8, size: usize) -> bool {
+    syscall!(SYS_munmap, addr, size).is_ok()
+}
+
+unsafe fn numa_count() -> usize {
+    static mut NUMA_COUNT : usize = 0;
+    static mut BUFFER : [u8;33] =  [0; 33];
+    static PREFIX : &'static [u8] = b"/sys/devices/system/node/node";
+    unsafe fn set(mut i: u8) {
+        // we do not want to fuck up with IO operations,
+        // so we write a temporary format function for file access
+        let mut cursor = PREFIX.len();
+        if i >= 100 {
+            BUFFER[cursor] = i / 100 + 48;
+            cursor += 1;
+        }
+        if i >= 10 {
+            BUFFER[cursor] = (i % 100) / 10 + 48;
+            cursor += 1;
+        }
+        BUFFER[cursor] = i % 10 + 48;
+        BUFFER[cursor + 1] = 0;
+    }
+    if core::intrinsics::unlikely(NUMA_COUNT == 0) {
+        core::ptr::copy_nonoverlapping(PREFIX.as_ptr() as *mut u8, BUFFER.as_mut_ptr() as *mut u8, 29);
+        for i in 0..NUMA_LIMIT {
+            set(i as u8);
+            #[cfg(test)]
+                {
+                    print!("checking {:?}", std::ffi::CStr::from_ptr(BUFFER.as_ptr() as *mut i8));
+                }
+            if let Ok(_) = syscall!(SYS_access, &BUFFER as *const u8 as usize, 4) {
+                #[cfg(test)]
+                    {
+                        println!(" [SUCCESS]");
+                    }
+                NUMA_COUNT += 1;
+            }
+            else {
+                #[cfg(test)]
+                    {
+                        println!(" [FAILED]");
+                    }
+            }
+        }
+    }
+    NUMA_COUNT
+}
+
+unsafe fn current_numa_node() -> usize {
+    if numa_count() <= 1 {
+        return 0;
+    }
+    let mut node = 0;
+    let mut ncpu = 0;
+    if syscall!(SYS_getcpu, &ncpu as *const _, &node as *const _, 0).is_ok() {
+        node
+    } else {
+        0
+    }
 }
 
 #[repr(C)]
 struct Heap {
     next: *mut Block,
-    page_direct: [*mut Page; 128],
-    page_queues: [PageQueue; ]
+    page_direct: [*mut Page; 128]
+}
+
+#[cfg(test)]
+mod test {
+    #[test]
+    fn test_numa() {
+        unsafe {
+            println!("{}, {}", super::numa_count(), super::numa_count());
+        }
+    }
+    #[test]
+    fn test_numa_node() {
+        unsafe {
+            println!("{}", super::current_numa_node());
+        }
+    }
 }
